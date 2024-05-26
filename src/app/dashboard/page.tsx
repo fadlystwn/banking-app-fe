@@ -19,6 +19,7 @@ import Alert from '@mui/material/Alert'
 import TransactionOverview from '../ui/TransactionOverview';
 import ListTransaction from '../ui/ListTransactions';
 import { TableViewOutlined } from '@mui/icons-material';
+import Link from 'next/link';
 
 const drawerWidth = 240;
 
@@ -58,16 +59,25 @@ const Dashboard = () => {
         <Toolbar />
         <Divider />
         <List>
-          {['Home', 'Create Transaction', 'Transaction List'].map((text, index) => (
-            <ListItem key={text} disablePadding>
-              <ListItemButton>
-                <ListItemIcon>
-                  {index % 2 === 0 ? <HomeIcon /> : <TableViewOutlined />}
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItemButton>
-            </ListItem>
-          ))}
+          <>
+            {[
+              { text: 'Home', icon: <HomeIcon />, link: '/' },
+              { text: 'Create Transaction', icon: <TableViewOutlined />, link: '/transactions/create' },
+              { text: 'Transaction List', icon: <HomeIcon />, link: '/' },
+              // Add more items as needed
+            ].map((item, index) => (
+              <ListItem key={item.text} disablePadding>
+                <ListItemButton>
+                  <Link href="/" style={{ display: 'flex', textDecoration: 'none' }}>
+                    <ListItemIcon>
+                      {item.icon}
+                    </ListItemIcon>
+                    <ListItemText primary={item.text} />
+                  </Link>
+                </ListItemButton>
+              </ListItem>
+            ))}
+          </>
         </List>
       </Drawer >
       <Box
