@@ -32,7 +32,7 @@ const Dashboard = () => {
             Permanent drawer
           </Typography>
           {/* Add Logout button */}
-          <Typography variant="body1" color="inherit" onClick={handleLogout} sx={{ cursor: 'pointer', marginRight: 2 }}>
+          <Typography variant="body1" color="inherit" onClick={() => { }} sx={{ cursor: 'pointer', marginRight: 2 }}>
             Logout
           </Typography>
           {/* Add User Avatar */}
